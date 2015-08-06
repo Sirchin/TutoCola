@@ -1,0 +1,66 @@
+package tutostack;
+
+public class Cola {
+	int[] elArray;
+	int punteroQuitar = 0;
+	int punteroPoner = 0;
+
+	public Cola() {
+		elArray = new int[11];
+
+	}
+
+	public boolean vacia() {
+		if (punteroQuitar == punteroPoner) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean llena() {
+		if (punteroQuitar == 0 && punteroPoner == 10 || punteroPoner == punteroQuitar - 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean poner(int valor) {
+		if (!llena()) {
+			elArray[punteroPoner] = valor;
+			if (punteroPoner == 10) {
+				punteroPoner = 0;
+			} else {
+				punteroPoner++;
+			}
+			return true;
+		} else {
+			System.out.println("la cola esta llena");
+			return false;
+		}
+	}
+
+	public boolean quitar() {
+		if (!vacia()) {
+			if (punteroQuitar == 10) {
+				punteroQuitar = 0;
+			} else {
+				punteroQuitar++;
+			}
+			return true;
+		} else {
+			System.out.println("la cola esta vacia");
+			return false;
+		}
+	}
+
+	public void primerValor() {
+		if (!vacia()) {
+			System.out.println(elArray[punteroQuitar]);
+		} else {
+			System.out.println("la cola esta vacia");
+
+		}
+	}
+}
